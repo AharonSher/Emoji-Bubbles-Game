@@ -28,7 +28,7 @@ public class EmojiBubblesApp extends JFrame implements MouseListener {
 	private StatisticData statisticData;
 
 	private JPanel mainPanel, pnlPlayerturnName, pnlMiddle, pnlButtons, pnlPlayers;
-	private JLabel lblPlayerName, lblTheTurnOf, lblClock, lblDisplayTime;
+	private JLabel lblPlayerName,lblPlayerInstructions, lblTheTurnOf, lblClock, lblDisplayTime;
 	private JLabel lblEndGame;
 
 	private EmojiLabel elAddPlayer, currentPlayer;
@@ -63,50 +63,53 @@ public class EmojiBubblesApp extends JFrame implements MouseListener {
 		this.client = new Client();
 		
 		setCursor(this.cursor);
+		
 		selfReference = this;
 
 		// player name section - > on top
 		pnlPlayerturnName = new JPanel(new FlowLayout());
-		pnlPlayerturnName.setOpaque(true);
-		lblTheTurnOf = new JLabel("turn");
-		lblPlayerName = new JLabel();
-		lblTheTurnOf.setFont(EmojiLabel.font);
-		lblPlayerName.setFont(EmojiLabel.font);
-		pnlPlayerturnName.add(lblTheTurnOf);
-		pnlPlayerturnName.add(lblPlayerName);
-		lblDisplayTime = new JLabel();
+//		pnlPlayerturnName.setOpaque(true);
+//		lblTheTurnOf = new JLabel("turn");
+//		lblPlayerName = new JLabel();
+//		lblTheTurnOf.setFont(EmojiLabel.font);
+//		lblPlayerName.setFont(EmojiLabel.font);
+//		pnlPlayerturnName.add(lblTheTurnOf);
+//		pnlPlayerturnName.add(lblPlayerName);
+		
 		
 
-		// Players - > on right
+//		// Players - > on right
 		pnlPlayers = new JPanel(new GridLayout(0, 1));
-		pnlPlayers.setOpaque(true);
+//		pnlPlayers.setOpaque(true);
 		elAddPlayer = new EmojiLabel("Add");
-		pnlPlayers.add(elAddPlayer);
-
-		// button panel -> on bottom
+//		pnlPlayers.add(elAddPlayer);
+//
+//		// button panel -> on bottom
 		pnlButtons = new JPanel(new FlowLayout());
-		pnlButtons.setOpaque(true);
-		pnlButtons.setBackground(Color.white);
-		lblEndGame = new EmojiLabel("End Game");
-		pnlButtons.add(lblEndGame);
-		lblEndGame.addMouseListener(this);
-		pnlButtons.add(lblClock);
-		pnlButtons.add(lblDisplayTime);
+//		pnlButtons.setOpaque(true);
+//		pnlButtons.setBackground(Color.white);
+		lblEndGame = new EmojiLabel("End game");
+//		pnlButtons.add(lblEndGame);
+//		lblEndGame.addMouseListener(this);
+		lblClock = new JLabel();
+//		pnlButtons.add(lblClock);
+		lblDisplayTime = new JLabel();
+//		pnlButtons.add(lblDisplayTime);
 
-		// main panel (contain all panels)
+//		// main panel (contain all panels)
 		mainPanel = new JPanel(new BorderLayout());
-		mainPanel.setBackground(Color.white);
-		mainPanel.add(pnlPlayerturnName, BorderLayout.NORTH);
-		mainPanel.add(pnlPlayers, BorderLayout.EAST);
-		// create bubble game, add it to panel and run it as thread
-
+//		mainPanel.setBackground(Color.white);
+//		mainPanel.add(pnlPlayerturnName, BorderLayout.NORTH);
+//		mainPanel.add(pnlPlayers, BorderLayout.EAST);
+//		//create bubble game, add it to panel and run it as thread
+//
 		pnlMiddle = new JPanel(new BorderLayout());
-		pnlMiddle.setOpaque(true);
-		pnlMiddle.setBackground(Color.white);
-		pnlMiddle.add(new JLabel(new ImageIcon("images/red.png")), BorderLayout.CENTER);
+//		pnlMiddle.setOpaque(true);
+//		pnlMiddle.setBackground(Color.white);
+		pnlMiddle.add(new JLabel(new ImageIcon("images/openingScreen.png")), BorderLayout.CENTER);
 
-		mainPanel.add(pnlMiddle, BorderLayout.CENTER);
-		mainPanel.add(pnlButtons, BorderLayout.SOUTH);
+		mainPanel.add(new StartGamePanel(), BorderLayout.CENTER);
+//		mainPanel.add(pnlButtons, BorderLayout.SOUTH); 
 
 		// array list of EmotionLabel for players list
 		namesArrayList = new ArrayList<EmojiLabel>();
@@ -124,8 +127,8 @@ public class EmojiBubblesApp extends JFrame implements MouseListener {
 		UIManager.put("OptionPane.messageFont", font);
 		UIManager.put("OptionPane.buttonFont", font);
 		
-//		timerFont = new Font(Font.SANS_SERIF, Font.BOLD, 40);
-//		lblDisplayTime.setFont(timerFont);
+		timerFont = new Font(Font.SANS_SERIF, Font.BOLD, 40);
+		lblDisplayTime.setFont(timerFont);
 	
 		
 		
@@ -135,6 +138,7 @@ public class EmojiBubblesApp extends JFrame implements MouseListener {
 				"share data permission", JOptionPane.YES_NO_OPTION);
 
 		if (isPermitted == 0)
+
 			isDataCollectionPermitted = true;
 
 		// create timer for statistics
@@ -155,7 +159,7 @@ public class EmojiBubblesApp extends JFrame implements MouseListener {
 			@Override
 			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
 
-				new FeedbackFrame(namesArrayList.size(), client);
+//				new FeedbackFrame(namesArrayList.size(), client);
 
 			}
 		});
@@ -324,6 +328,22 @@ public class EmojiBubblesApp extends JFrame implements MouseListener {
 
 	public void setDataCollectionPermitted(boolean isDataCollectionPermitted) {
 		this.isDataCollectionPermitted = isDataCollectionPermitted;
+	}
+
+	public JLabel getLblClock() {
+		return lblClock;
+	}
+
+	public void setLblClock(JLabel lblClock) {
+		this.lblClock = lblClock;
+	}
+
+	public JPanel getMainPanel() {
+		return mainPanel;
+	}
+
+	public void setMainPanel(JPanel mainPanel) {
+		this.mainPanel = mainPanel;
 	}
 
 

@@ -141,6 +141,8 @@ public class EmotionConversationPanel extends JPanel implements MouseListener {
 	public void mousePressed(MouseEvent me) {
 		// swap question -> get next question from array
 		// and if you got to end -> start from beginning
+		
+		// המימוש לא בui
 		if (me.getSource() == lblSwapQuestion) {
 			if (emotionQuestionArrayListIndex == emotionQuestionArrayList.size())
 				emotionQuestionArrayListIndex = 0;

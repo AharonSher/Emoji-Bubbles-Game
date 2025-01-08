@@ -42,8 +42,11 @@ public class EmotionChooseColorsPanel extends JPanel {
 				
 				pnlMiddle.add(new EmotionConversationPanel(playerEmotionLabel,  // sent player label
 						EmojiBubblesApp.emotionData.getEmotionResultArraylist().get(randomEmotionIndex).getName(), mainClassPnlMiddle, randomEmotionIndex)); // and emotion name
+				validate();
 			}
+			
 		});
+		
 		
 
 		// left panel

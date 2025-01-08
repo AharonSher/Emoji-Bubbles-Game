@@ -10,7 +10,7 @@ public class EmojiServerGUI extends JFrame {
 	private JTextArea jta = new JTextArea();
 	private JPanel contentPane;
 	private ServerSocket serverSocket;
-	private Socket socket;
+	private Socket socket; 
 
 	public static void main(String[] args) {
 		new EmojiServerGUI();

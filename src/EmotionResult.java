@@ -3,9 +3,7 @@ import java.util.ArrayList;
 
 public class EmotionResult implements Serializable {
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -3534316621432656864L;
 
 	private String name;

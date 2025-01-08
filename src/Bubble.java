@@ -57,7 +57,6 @@ class Bubble {
 				diameter++;
 			else
 				growing = false;
-
 		}
 
 		// shrink till start diameter is reached
